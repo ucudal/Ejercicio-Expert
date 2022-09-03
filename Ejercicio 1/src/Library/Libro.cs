@@ -65,27 +65,22 @@ namespace SRP
             }
         }
 
-        public string buscarLibro(Book libro){
+        
+        public string buscarLibro(String nombre){
+
             List<Book> keys = dicc.Keys.ToList();
             List<(string,string)> values = dicc.Values.ToList();
-            int i = 0;
-            bool salir = false;
-            while ( (i < keys.Count) && (!salir) ){
-                if (libro != keys[i]){
-                    i++;
+            string salida = "";
+
+            for (int i = 0; i < dicc.Count; i++){
+                if (nombre.Equals(keys[i].Title)){
+                    salida = $"El libro {nombre} se encuentra en {values[i]}";
                 }
                 else{
-                    salir = true;
+                     salida = $"El libro {nombre} no se encuentra.";
                 }
             }
-            string salida = "";
-            if (i < keys.Count){
-                salida = $"El libro {libro.Title} se encuentra en {values[i]}";
-            }
-            else{
-                salida = $"El libro {libro.Title} no se encuentra.";
-            }
-
+           
             return salida;
         }
 
