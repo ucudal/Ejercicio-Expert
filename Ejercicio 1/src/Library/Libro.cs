@@ -37,11 +37,11 @@ namespace SRP
 
     public class ShelveBook{
 
-        //private List<Book> libros = new List<Book>();
+        
         public static Dictionary<Book, (string, string)> dicc = new Dictionary<Book, (string,string)>(){};
 
-        public string LibrarySector { get ; set; } //sector
-        public string LibraryShelve { get ; set; } // shelve 7
+        public string LibrarySector { get ; set; } 
+        public string LibraryShelve { get ; set; } 
 
         
 
@@ -52,7 +52,7 @@ namespace SRP
         }
 
         //método que agrega un libro a la estanteria 
-        public void agregarLibroShelveBook(Book libro/*, string sector, string shelve*/){
+        public void agregarLibroShelveBook(Book libro){
             List<Book> keys = dicc.Keys.ToList();
             List<(string,string)> values = dicc.Values.ToList();
 
@@ -93,9 +93,6 @@ namespace SRP
         public void imprimirDicc(){
             
             Console.WriteLine("ELEMENTOS DEL DICCIONARIO :");
-            /*foreach(KeyValuePair<Book, (string,string)> item in dicc){
-                Console.WriteLine($"{item.Key} : {item.Value}");
-            }*/
             foreach (var kvp in dicc) {
                 Console.WriteLine("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
             }
