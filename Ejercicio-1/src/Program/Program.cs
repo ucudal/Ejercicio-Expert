@@ -24,6 +24,8 @@ namespace SRP
             shelve3.agregarLibroShelveBook(book2); //espacio ocupado, por lo que no se puede agregar el libro
             shelve1.imprimirDicc();
 
+            Console.WriteLine();
+
             //Probando el método buscarLibro
             Console.WriteLine(shelve1.buscarLibro(book2.Title));
             Book book3 = new Book("Hola Mundo","Anonimo","001-034");

@@ -58,9 +58,10 @@ namespace SRP
 
             (string, string) t1 = (this.LibrarySector, this.LibraryShelve);
             if (values.Contains(t1)){
-                Console.WriteLine($"Ya esta ocupado el espacio {t1}");
+                Console.WriteLine($"Libro no agregado, ya esta ocupado el espacio {t1}");
             }
             else{
+                Console.WriteLine($"Libro agregado.");
                 dicc.Add(libro, t1);
             }
         }
