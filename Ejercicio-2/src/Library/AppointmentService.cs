@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Text;
+using System.Collections.Generic;
 
 namespace Library
 {
     public class AppointmentService
     {
         public static Boolean isValid = true;
+        public static List<string> listaID = new List<string>();
     
         public static string CreateAppointment(string name, string id, string phoneNumber, DateTime date, string appoinmentPlace, string doctorName)
         {
@@ -13,14 +15,15 @@ namespace Library
             //Boolean isValid = true;
         
             Patient pat = new Patient(name, id, phoneNumber, stringBuilder);
+            IDUnico idd = new IDUnico(id, stringBuilder);
             Appointment cita = new Appointment(appoinmentPlace, stringBuilder);
             Doctor doc = new Doctor(doctorName, stringBuilder);
-
 
             if (isValid)
             {
                 stringBuilder.Append("Appoinment scheduled");
             }
+            isValid = true;
             return stringBuilder.ToString();
         }
     }
@@ -46,6 +49,19 @@ namespace Library
                     AppointmentService.isValid = false;
                 }
             }
+    }
+
+    public class IDUnico{
+        public IDUnico(String id,  StringBuilder stringBuilder){
+
+            if (AppointmentService.listaID.Contains(id)){
+                stringBuilder.Append("Cannot schedule an appointment, 'id' already exists\n");
+                AppointmentService.isValid = false;
+            }
+            else{
+                AppointmentService.listaID.Add(id);
+            }
+        }
     }
 
     public class Appointment{
